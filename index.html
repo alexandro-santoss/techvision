@@ -2,216 +2,143 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TechVision Solutions</title>
-<style>
-:root{
-  --bg:#0f1724; --card:#0b1220; --accent1:#7c3aed; --accent2:#06b6d4; --muted:#9aa7b2;
-  --radius:14px; --maxw:1100px; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:#e6eef6;line-height:1.5;overflow-x:hidden;padding-top:80px;position:relative;}
-#particleCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
-.container{max-width:var(--maxw);margin:0 auto;padding:28px;position:relative;z-index:1}
-.header-fixed{position:fixed;top:0;width:100%;z-index:1000;backdrop-filter:blur(6px);background:rgba(12,18,30,0.7);padding:12px 0;}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:56px;height:56px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:grid;place-items:center;border-radius:12px;font-weight:700}
-nav ul{display:flex;gap:12px;list-style:none}
-nav a{color:var(--muted);text-decoration:none;font-weight:600}
-nav a:hover{color:#fff}
-.cta{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px 14px;border-radius:10px;color:#021026;text-decoration:none;font-weight:700}
-.hero{display:flex;gap:24px;align-items:center;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px}
-.hero-left{flex:1}
-.eyebrow{color:var(--accent2);font-weight:700}
-h1{font-size:clamp(26px,4.6vw,44px);margin:8px 0}
-.lead{color:var(--muted);margin-bottom:18px}
-.hero-cta{display:flex;gap:12px}
-.btn-outline{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);color:#fff;text-decoration:none}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-.card h3{margin:8px 0}
-.muted{color:var(--muted)}
-.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.portfolio-item{height:180px;background:linear-gradient(180deg,rgba(0,0,0,0.15),transparent);border-radius:10px;overflow:hidden;position:relative}
-.portfolio-item img{width:100%;height:100%;object-fit:cover;display:block}
-.portfolio-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.5));display:flex;align-items:flex-end;padding:12px}
-.blog-list{display:flex;flex-direction:column;gap:10px}
-.blog-item{display:flex;gap:12px;align-items:center;padding:10px;background:rgba(255,255,255,0.04);border-radius:10px}
-.blog-item img{width:92px;height:64px;object-fit:cover;border-radius:8px}
-.contact{display:grid;grid-template-columns:1fr 360px;gap:18px}
-form label{display:block;font-weight:600;margin-bottom:6px}
-input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-.socials{display:flex;gap:8px;align-items:center}
-.socials span{font-size:32px;cursor:pointer;transition:transform 0.2s}
-.socials span:hover{transform:scale(1.2)}
-footer{margin-top:28px;text-align:center;color:var(--muted)}
-@media (max-width:900px){.grid,.portfolio-grid{grid-template-columns:repeat(2,1fr)} .contact{grid-template-columns:1fr}}
-@media (max-width:600px){nav ul{display:none} .hero{flex-direction:column;align-items:flex-start} .grid,.portfolio-grid{grid-template-columns:1fr}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Player de música -->
-<div style="position:fixed;bottom:20px;left:20px;z-index:1001;">
-  <audio id="bgMusic" loop></audio>
-  <button onclick="toggleMusic()" style="padding:10px 14px;border-radius:12px;background:var(--accent1);color:#fff;border:none;cursor:pointer;">🎵 Play/Pause</button>
-</div>
-
-<canvas id="particleCanvas"></canvas>
-
-<header class="header-fixed">
-<div class="container nav">
-  <div class="brand">
-    <div class="logo">TV</div>
-    <div>
-      <div style="font-weight:800">TechVision Solutions</div>
-      <div class="muted" style="font-size:12px">Inovação · Segurança · Performance</div>
-    </div>
-  </div>
-  <nav>
-    <ul>
-      <li><a href="#inicio">Início</a></li>
-      <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#portfolio">Portfólio</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-  </nav>
-  <div><a class="cta" href="#contato">Diagnóstico Gratuito</a></div>
-</div>
+<header>
+<nav>
+<a href="#inicio">Início</a>
+<a href="#servicos">Serviços</a>
+<a href="#portfolio">Portfólio</a>
+<a href="#missao">Nossa Missão</a>
+<a href="#contato">Contato</a>
+</nav>
 </header>
 
-<div class="container">
-<!-- HERO -->
-<section id="inicio" class="hero">
-  <div class="hero-left">
-    <div class="eyebrow">TechVision Solutions</div>
-    <h1>Infraestrutura confiável e performance que impulsiona resultados</h1>
-    <p class="lead">Consultoria em TI, infraestrutura corporativa e setups gamers personalizados.</p>
-    <div class="hero-cta">
-      <a class="cta" href="#contato">Solicite Diagnóstico</a>
-      <a class="btn-outline" href="#servicos">Nossos Serviços</a>
-    </div>
-  </div>
+<section class="hero" id="inicio">
+<h1>TechVision Solutions</h1>
+<p>Excelência em Tecnologia, Infraestrutura e Inovação.</p>
+<button onclick="window.open('https://wa.me/5511978357841','_blank')">Solicite um diagnóstico gratuito</button>
 </section>
 
-<!-- SERVIÇOS -->
-<section id="servicos" style="margin-top:22px">
-<h2>Serviços</h2>
-<div class="grid">
-  <article class="card"><h3>Consultoria em TI e redes</h3><p class="muted">Diagnóstico, planejamento e segurança.</p></article>
-  <article class="card"><h3>Infraestrutura corporativa</h3><p class="muted">Cabeamento, switches, firewalls, backup e monitoramento.</p></article>
-  <article class="card"><h3>Setups gamers personalizados</h3><p class="muted">Estações otimizadas, baixa latência e estética.</p></article>
+<section id="servicos">
+<h2>Nossos Serviços</h2>
+<div class="services">
+<div class="card"><h3>Consultoria de TI</h3><p>Planejamento e execução de soluções tecnológicas estratégicas para empresas.</p></div>
+<div class="card"><h3>Setup Gamers</h3><p>Montagem e otimização de PCs gamers com desempenho máximo e design profissional.</p></div>
+<div class="card"><h3>Infraestruturas</h3><p>Projetos completos de rede, servidores e sistemas corporativos com alta confiabilidade.</p></div>
+<div class="card"><h3>Desenvolvimento e Otimização</h3><p>Criação e melhoria de sistemas, integrações e processos para máxima eficiência corporativa.</p></div>
 </div>
 </section>
 
-<!-- PORTFÓLIO -->
-<section id="portfolio" style="margin-top:22px">
+<section id="portfolio">
 <h2>Portfólio</h2>
-<div class="portfolio-grid">
-  <div class="portfolio-item card"><img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="portfolio-overlay"><div><strong>Rede Corporativa</strong><div class="muted">Redução de latência 45%</div></div></div></div>
-  <div class="portfolio-item card"><img src="https://images.pexels.com/photos/3861970/pexels-photo-3861970.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="portfolio-overlay"><div><strong>Data Center</strong><div class="muted">Infra nova com redundância</div></div></div></div>
-  <div class="portfolio-item card"><img src="https://images.pexels.com/photos/3861968/pexels-photo-3861968.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="portfolio-overlay"><div><strong>Setup Gamer</strong><div class="muted">Baixa latência e estética</div></div></div></div>
+<div class="portfolio">
+<div class="portfolio-item">
+<a href="portfolio-setup.html"><img src="img/setup.jpg" alt="Setup Gamer"></a>
+<p>Setup Gamer</p>
 </div>
-</section>
-
-<!-- BLOG -->
-<section id="blog" style="margin-top:22px">
-<h2>Blog</h2>
-<div class="blog-list">
-  <article class="blog-item"><img src="https://images.pexels.com/photos/3861955/pexels-photo-3861955.jpeg?auto=compress&cs=tinysrgb&w=200"><div><div style="font-weight:700">Redução de Latência</div><div class="muted" style="font-size:13px">8 de outubro de 2025 · 5 min leitura</div></div></article>
-  <article class="blog-item"><img src="https://images.pexels.com/photos/3861956/pexels-photo-3861956.jpeg?auto=compress&cs=tinysrgb&w=200"><div><div style="font-weight:700">Checklist de Segurança</div><div class="muted" style="font-size:13px">20 de setembro de 2025 · 7 min leitura</div></div></article>
+<div class="portfolio-item">
+<a href="portfolio-datacenter.html"><img src="img/datacenter.jpg" alt="Data Center"></a>
+<p>Data Center</p>
 </div>
-</section>
+<div class="portfolio-item">
+<a href="portfolio-infra.html"><img src="img/infra.jpg" alt="Infraestrutura"></a>
+<p>Infraestrutura</p>
+</div>
+<div class="portfolio-item">
+<a href="portfolio-dev.html"><img src="img/dev-otimizacao.jpg" alt="Desenvolvimento e Otimização"></a>
+<p>Desenvolvimento e Otimização</p>
+</div>
+</div>
 
-<!-- CONTATO -->
-<section id="contato" style="margin-top:22px">
-<h2>Contato</h2>
-<div class="contact">
-  <div>
-    <form id="contactForm">
-      <label>Nome</label><input id="name" required>
-      <label>Email</label><input id="email" type="email" required>
-      <label>Mensagem</label><textarea id="message" rows="5" required></textarea>
-      <div style="display:flex;gap:10px;margin-top:10px">
-        <button class="cta" type="submit">Enviar</button>
-        <a href="https://wa.me/5511978357841" target="_blank" class="btn-outline">💬 WhatsApp</a>
-      </div>
-    </form>
+<div class="player">
+<h3>Player de Música</h3>
+<div class="music-player">
+  <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+  <button id="playPause">▶️</button>
+  <div class="progress-container">
+    <div id="progress"></div>
   </div>
-  <aside class="card">
-    <h3>Redes</h3>
-    <div class="socials">
-      <span onclick="window.open('https://www.linkedin.com','_blank')">🔗</span>
-      <span onclick="window.open('https://www.instagram.com','_blank')">📸</span>
-      <span onclick="window.open('https://wa.me/5511978357841','_blank')">💬</span>
-    </div>
-  </aside>
+  <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+</div>
+</div>
+
+<section id="missao">
+<h2>Nossa Missão, Conceitos e Valores</h2>
+<div class="mission">
+<div class="card"><h3>Missão</h3><p>Entregar soluções tecnológicas inovadoras, seguras e eficientes, contribuindo para o crescimento sustentável de nossos clientes.</p></div>
+<div class="card"><h3>Conceito</h3><p>União entre tecnologia, desempenho e visão de futuro, com foco em resultados reais e satisfação total.</p></div>
+<div class="card"><h3>Valores</h3><p>Ética, inovação, compromisso, excelência e respeito aos clientes e colaboradores.</p></div>
 </div>
 </section>
+
+<section id="contato">
+<h2>Contato</h2>
+<form id="contactForm" action="mailto:comercialtechvisionsolutions@gmail.com" method="post" onsubmit="enviarFormulario(event)">
+<input type="text" name="nome" placeholder="Seu Nome" required>
+<input type="email" name="email" placeholder="Seu Email" required>
+<textarea name="mensagem" rows="5" placeholder="Sua Mensagem" required></textarea>
+<input type="submit" value="Enviar">
+</form>
+</section>
+
+<div class="whatsapp-float" onclick="window.open('https://wa.me/5511978357841','_blank')">💬</div>
 
 <footer>
-  <div>© TechVision Solutions — Todos os direitos reservados</div>
+<p>© 2025 TechVision Solutions | Todos os direitos reservados.</p>
 </footer>
 
 <script>
-// Música ambiente
-const music = document.getElementById('bgMusic');
-const playlist = [
-  'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-  'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-  'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
-];
-let currentTrack = 0;
-music.src = playlist[currentTrack];
-music.volume = 0.3;
-music.play();
-music.addEventListener('ended',()=>{
-  currentTrack = (currentTrack+1)%playlist.length;
-  music.src = playlist[currentTrack];
-  music.play();
-});
-function toggleMusic(){music.paused?music.play():music.pause();}
+function enviarFormulario(event){
+    event.preventDefault();
+    alert('Mensagem enviada com sucesso!');
+    document.getElementById('contactForm').reset();
+}
 
-// Formulário AJAX
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', async e=>{
-  e.preventDefault();
-  const name=document.getElementById('name').value.trim();
-  const email=document.getElementById('email').value.trim();
-  const message=document.getElementById('message').value.trim();
-  if(!name||!email||!message){alert('Preencha todos os campos'); return;}
-  try{
-    const res=await fetch('http://localhost:3000/send',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({name,email,message})
-    });
-    const data=await res.json();
-    if(data.success){alert('Mensagem enviada com sucesso!'); form.reset();}
-    else alert('Erro: '+data.error);
-  }catch(err){alert('Erro ao enviar mensagem');console.error(err);}
+const audio = document.getElementById('audio');
+const playPause = document.getElementById('playPause');
+const progress = document.getElementById('progress');
+const currentTimeEl = document.getElementById('currentTime');
+const durationEl = document.getElementById('duration');
+
+audio.addEventListener('loadedmetadata', () => {
+    const duration = Math.floor(audio.duration);
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration % 60;
+    durationEl.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 });
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-  e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-}));
+playPause.addEventListener('click', () => {
+    if(audio.paused){
+        audio.play();
+        playPause.textContent = '⏸️';
+    } else {
+        audio.pause();
+        playPause.textContent = '▶️';
+    }
+});
 
-// Partículas
-const canvas=document.getElementById('particleCanvas'); const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-let mouse={x:null,y:null};
-window.addEventListener('mousemove',e=>{mouse.x=e.clientX; mouse.y=e.clientY;});
-let particles=[]; for(let i=0;i<100;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5});}
-function drawParticles(){ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle='rgba(124,58,174,0.7)'; particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,2,0,Math.PI*2);ctx.fill();}); for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){let dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy); if(dist<120){ctx.strokeStyle='rgba(6,182,212,'+(1-dist/120)+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}}}}
-function updateParticles(){particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy; if(p.x<0||p.x>canvas.width)p.vx*=-1; if(p.y<0||p.y>canvas.height)p.vy*=-1; if(mouse.x&&mouse.y){let dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy); if(dist<100){p.vx+=(dx/dist)*0.05; p.vy+=(dy/dist)*0.05;}}});}
-function animate(){drawParticles(); updateParticles(); requestAnimationFrame(animate);}
-animate();
-window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+audio.addEventListener('timeupdate', () => {
+    const progressPercent = (audio.currentTime / audio.duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+    const current = Math.floor(audio.currentTime);
+    const minutes = Math.floor(current / 60);
+    const seconds = current % 60;
+    currentTimeEl.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+});
+
+document.querySelector('.progress-container').addEventListener('click', (e) => {
+    const width = e.currentTarget.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+    audio.currentTime = (clickX / width) * duration;
+});
 </script>
 
 </body>
 </html>
-
