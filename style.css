@@ -1,5 +1,4 @@
-
-/* style.css - TechVision Solutions (responsive, futuristic industrial) */
+/* style.css - TechVision Solutions (RESPONSIVE + social icons) */
 * {margin:0; padding:0; box-sizing:border-box;}
 :root{
   --accent:#f97316;
@@ -9,7 +8,16 @@
 }
 html,body{height:100%;}
 body{font-family: 'Roboto', sans-serif; background: linear-gradient(180deg,#070707 0%, #111 100%); color:#eee; -webkit-font-smoothing:antialiased;}
-header{position:fixed; width:100%; top:0; left:0; background:rgba(10,10,10,0.65); backdrop-filter:blur(8px); z-index:1000;}
+
+/* fixed social icons (top-left) */
+.social-fixed{position:fixed; left:14px; top:12px; z-index:1300; display:flex; flex-direction:column; gap:8px;}
+.social-fixed a{width:40px; height:40px; display:flex; align-items:center; justify-content:center; background:rgba(30,30,30,0.6); border:1px solid #222; border-radius:8px; color:#fff; text-decoration:none; font-size:18px; transition:transform .18s, box-shadow .18s, background .18s;}
+.social-fixed a:hover{transform:translateY(-3px); box-shadow:0 8px 18px rgba(249,115,22,0.18); background:linear-gradient(135deg, rgba(249,115,22,0.12), rgba(249,115,22,0.06)); color:var(--accent);}
+.social-fixed a svg{width:20px; height:20px;}
+@media(max-width:480px){ .social-fixed{left:8px; top:8px; gap:6px;} .social-fixed a{width:36px;height:36px;} }
+
+/* header and layout */
+header{position:fixed; width:100%; top:0; left:0; background:rgba(10,10,10,0.65); backdrop-filter:blur(8px); z-index:1200;}
 .container{max-width:1200px; margin:0 auto; padding:0 20px;}
 nav{display:flex; gap:28px; justify-content:center; align-items:center; height:68px;}
 nav a{color:#eee; text-decoration:none; font-family:'Orbitron',sans-serif; letter-spacing:1px; font-weight:600;}
@@ -28,22 +36,28 @@ h2{font-family:'Orbitron',sans-serif; color:var(--accent); margin-bottom:22px; t
 .portfolio-item{width:300px; text-align:center;}
 .portfolio-item img{width:100%; height:200px; object-fit:cover; border-radius:10px; border:2px solid #222; transition:transform .25s, border-color .25s;}
 .portfolio-item img:hover{transform:scale(1.03); border-color:var(--accent);}
+
+/* player */
 .player{margin-top:30px;}
 .music-player{display:flex; align-items:center; gap:12px; background:var(--card); padding:10px 12px; width:360px; border-radius:10px; margin:18px auto; border:1px solid #222;}
 .music-player button{background:var(--accent); border:none; color:#fff; padding:10px; border-radius:8px; cursor:pointer; font-size:16px;}
 .progress-container{background:#222; height:6px; border-radius:6px; overflow:hidden; cursor:pointer; width:150px;}
 #progress{background:var(--accent); width:0%; height:100%; transition:width .1s linear;}
 .timings{font-size:0.85rem; color:var(--muted); font-family:Roboto, sans-serif;}
-form{max-width:500px; margin:0 auto; display:flex; flex-direction:column; gap:15px;}
-input, textarea{width:100%; padding:12px; border-radius:8px; background:#0b0b0b; border:1px solid #222; color:#fff; margin-bottom:12px;}
+
+/* forms and footer */
+form{max-width:500px; margin:0 auto; display:flex; flex-direction:column; gap:12px;}
+input, textarea{width:100%; padding:12px; border-radius:8px; background:#0b0b0b; border:1px solid #222; color:#fff;}
 input[type=submit]{background:var(--accent); color:#fff; border:none; padding:12px 18px; border-radius:8px; cursor:pointer; font-weight:700;}
 footer{padding:30px 0; text-align:center; color:#7a7a7a; font-size:0.9rem; border-top:1px solid #0b0b0b; margin-top:40px;}
-.whatsapp-float{position:fixed; right:18px; bottom:18px; width:56px; height:56px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:22px; box-shadow:0 8px 30px rgba(0,0,0,0.5); z-index:1200;}
+
+/* portfolio details */
 .header-link{display:inline-block; margin:20px; color:var(--accent); text-decoration:none; font-weight:bold;}
 .section-img{width:100%; max-width:900px; height:auto; border-radius:12px; border:2px solid #222; display:block; margin:14px auto 26px;}
 .content-block{max-width:900px; margin:14px auto 24px; background:var(--card); border-radius:10px; padding:18px; border:1px solid #222;}
 .content-block h2{margin-bottom:8px;}
-/* Responsive */
+
+/* responsive */
 @media (max-width: 1024px){
   .hero h1{font-size:2.4rem;}
   .music-player{width:320px;}
