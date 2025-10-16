@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TechVision Solutions</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
+<div class="container">
 <nav>
 <a href="#inicio">Início</a>
 <a href="#servicos">Serviços</a>
@@ -17,15 +17,20 @@
 <a href="#missao">Nossa Missão</a>
 <a href="#contato">Contato</a>
 </nav>
+</div>
 </header>
 
+<main>
 <section class="hero" id="inicio">
+<div class="container">
 <h1>TechVision Solutions</h1>
 <p>Excelência em Tecnologia, Infraestrutura e Inovação.</p>
-<button onclick="window.open('https://wa.me/5511978357841','_blank')">Solicite um diagnóstico gratuito</button>
+<button class="btn" onclick="window.open('https://wa.me/5511978357841','_blank')">Solicite um diagnóstico gratuito</button>
+</div>
 </section>
 
 <section id="servicos">
+<div class="container">
 <h2>Nossos Serviços</h2>
 <div class="services">
 <div class="card"><h3>Consultoria de TI</h3><p>Planejamento e execução de soluções tecnológicas estratégicas para empresas.</p></div>
@@ -33,9 +38,11 @@
 <div class="card"><h3>Infraestruturas</h3><p>Projetos completos de rede, servidores e sistemas corporativos com alta confiabilidade.</p></div>
 <div class="card"><h3>Desenvolvimento e Otimização</h3><p>Criação e melhoria de sistemas, integrações e processos para máxima eficiência corporativa.</p></div>
 </div>
+</div>
 </section>
 
 <section id="portfolio">
+<div class="container">
 <h2>Portfólio</h2>
 <div class="portfolio">
 <div class="portfolio-item">
@@ -58,48 +65,61 @@
 
 <div class="player">
 <h3>Player de Música</h3>
-<div class="music-player">
+<div class="music-player" role="region" aria-label="player">
   <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-  <button id="playPause">▶️</button>
-  <div class="progress-container">
+  <button id="playPause" aria-label="Play">▶️</button>
+  <div class="progress-container" title="Clique para pular">
     <div id="progress"></div>
   </div>
-  <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+  <div class="timings"><span id="currentTime">0:00</span> / <span id="duration">0:00</span></div>
 </div>
 </div>
+</div>
+</section>
 
 <section id="missao">
+<div class="container">
 <h2>Nossa Missão, Conceitos e Valores</h2>
 <div class="mission">
 <div class="card"><h3>Missão</h3><p>Entregar soluções tecnológicas inovadoras, seguras e eficientes, contribuindo para o crescimento sustentável de nossos clientes.</p></div>
 <div class="card"><h3>Conceito</h3><p>União entre tecnologia, desempenho e visão de futuro, com foco em resultados reais e satisfação total.</p></div>
 <div class="card"><h3>Valores</h3><p>Ética, inovação, compromisso, excelência e respeito aos clientes e colaboradores.</p></div>
 </div>
+</div>
 </section>
 
 <section id="contato">
+<div class="container">
 <h2>Contato</h2>
-<form id="contactForm" action="mailto:comercialtechvisionsolutions@gmail.com" method="post" onsubmit="enviarFormulario(event)">
-<input type="text" name="nome" placeholder="Seu Nome" required>
-<input type="email" name="email" placeholder="Seu Email" required>
-<textarea name="mensagem" rows="5" placeholder="Sua Mensagem" required></textarea>
+<form id="contactForm" class="contact-form" action="https://formsubmit.co/comercialtechvisionsolutions@gmail.com" method="POST">
+<input type="text" name="name" placeholder="Seu nome" required>
+<input type="email" name="email" placeholder="Seu e-mail" required>
+<textarea name="message" rows="5" placeholder="Sua mensagem..." required></textarea>
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://techvision.example/obrigado.html">
 <input type="submit" value="Enviar">
 </form>
+</div>
 </section>
+</main>
 
-<div class="whatsapp-float" onclick="window.open('https://wa.me/5511978357841','_blank')">💬</div>
+<a class="whatsapp-float" href="https://wa.me/5511978357841" target="_blank" aria-label="WhatsApp">💬</a>
 
 <footer>
+<div class="container">
 <p>© 2025 TechVision Solutions | Todos os direitos reservados.</p>
+</div>
 </footer>
 
 <script>
-function enviarFormulario(event){
-    event.preventDefault();
-    alert('Mensagem enviada com sucesso!');
-    document.getElementById('contactForm').reset();
-}
+// form auto-clear after submit (works with formsubmit.co redirect)
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', function(e){
+  // allow FormSubmit to handle send, then reset after small delay
+  setTimeout(()=> contactForm.reset(), 300);
+});
 
+// Audio player logic
 const audio = document.getElementById('audio');
 const playPause = document.getElementById('playPause');
 const progress = document.getElementById('progress');
@@ -107,38 +127,40 @@ const currentTimeEl = document.getElementById('currentTime');
 const durationEl = document.getElementById('duration');
 
 audio.addEventListener('loadedmetadata', () => {
-    const duration = Math.floor(audio.duration);
-    const minutes = Math.floor(duration / 60);
-    const seconds = duration % 60;
-    durationEl.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  const duration = Math.floor(audio.duration) || 0;
+  const m = Math.floor(duration/60);
+  const s = duration%60;
+  durationEl.textContent = `${m}:${s<10?'0':''}${s}`;
 });
 
-playPause.addEventListener('click', () => {
-    if(audio.paused){
-        audio.play();
-        playPause.textContent = '⏸️';
-    } else {
-        audio.pause();
-        playPause.textContent = '▶️';
-    }
+playPause.addEventListener('click', ()=>{
+  if(audio.paused){
+    audio.play();
+    playPause.textContent = '⏸️';
+  } else {
+    audio.pause();
+    playPause.textContent = '▶️';
+  }
 });
 
-audio.addEventListener('timeupdate', () => {
-    const progressPercent = (audio.currentTime / audio.duration) * 100;
-    progress.style.width = `${progressPercent}%`;
-    const current = Math.floor(audio.currentTime);
-    const minutes = Math.floor(current / 60);
-    const seconds = current % 60;
-    currentTimeEl.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+audio.addEventListener('timeupdate', ()=>{
+  if(!audio.duration) return;
+  const percent = (audio.currentTime / audio.duration) * 100;
+  progress.style.width = percent + '%';
+  const cur = Math.floor(audio.currentTime);
+  const m = Math.floor(cur/60);
+  const s = cur%60;
+  currentTimeEl.textContent = `${m}:${s<10?'0':''}${s}`;
 });
 
-document.querySelector('.progress-container').addEventListener('click', (e) => {
-    const width = e.currentTarget.clientWidth;
-    const clickX = e.offsetX;
-    const duration = audio.duration;
-    audio.currentTime = (clickX / width) * duration;
+// jump on progress click
+document.querySelector('.progress-container').addEventListener('click', (e)=>{
+  const rect = e.currentTarget.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const w = rect.width;
+  const pct = x / w;
+  audio.currentTime = pct * audio.duration;
 });
 </script>
-
 </body>
 </html>
